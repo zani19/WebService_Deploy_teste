@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  web:
+    image: zani19/webservice:v1.0s20
+    container_name: web-container
+    ports:
+      - "${PORT}:5001"
+    environment:
+      - SERVER_URL=http://${SERVER_URL}:${PORT}
+      - TZ=America/Sao_Paulo
+    depends_on:
+      - mariadb
+  mariadb:
+    image: zani19/mariadb:v1.0
+    container_name: mariadb-container
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: fatec
+
+volumes:
+  mariadb-data:
