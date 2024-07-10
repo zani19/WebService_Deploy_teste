@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  app:
+    image: zani19/front_map:1.0.qmd
+    ports:
+      - "3001:3001"
+    environment:
+      NODE_ENV: development
